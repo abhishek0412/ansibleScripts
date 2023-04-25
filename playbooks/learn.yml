@@ -1,0 +1,23 @@
+# --- represents this file as a playbook
+---
+# Use [space]play[space] where play is combination of hosts+tasks
+- name: This is my first playbook  
+  hosts: all
+   # Become root user
+   become: yes
+   # List of tasks to be executed
+   tasks:
+    - name: This is my first task for wget
+      apt:
+        name=wget
+        update_cache=yes
+        state=latest
+    - name: This task installs apache2 on the vm
+      apt:
+        name=apache2
+        update_cache=yes 
+        state=latest     
+    - name: This task installs git
+      apt:
+        name=git
+        state=latest

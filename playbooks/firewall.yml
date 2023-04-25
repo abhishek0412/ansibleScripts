@@ -1,0 +1,38 @@
+# write an ansible playbook to update the firewall rules on the server
+# to allow the new port to be accessed from the internet
+- name: update firewall rules
+  hosts: server
+  tasks:
+    - name: update firewall rules
+      lineinfile:
+        dest: /etc/firewalld/zones/public.xml
+        regexp: 'port protocol="tcp" port="80"'
+        line: 'port protocol="tcp" port="8080"'
+        state: present
+      notify:
+        - restart firewalld
+
+# restart the firewall to apply the new rules
+- name: restart firewalld
+  hosts: server
+  tasks:
+    - name: restart firewalld
+      service:
+        name: firewalld
+        state: restarted
+
+# run the playbook
+ansible-playbook -i inventory playbook.yml
+
+# test the new port
+curl http://server:8080
+
+# remove the new port
+ansible-playbook -i inventory playbook.yml --tags remove
+
+# test the old port
+curl http://server:80
+
+# remove the old port
+ansible-playbook -i inventory playbook.yml --tags remove
+

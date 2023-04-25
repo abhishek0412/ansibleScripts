@@ -1,0 +1,39 @@
+# --- represents this file as a playbook
+---
+# Use [space]play[space] where play is combination of hosts+tasks
+- name: Play to start/stop/restart/reload httpd service
+  hosts: test
+  # Become root user
+  become: yes
+  # List of tasks to be execute
+  tasks:
+    - name: Start service httpd, if not started
+      ansible.builtin.service:
+        name: httpd
+        state: started
+
+    - name: Stop service httpd, if started
+      ansible.builtin.service:
+        name: httpd
+        state: stopped
+
+    - name: Restart service httpd, in all cases
+      ansible.builtin.service:
+        name: httpd
+        state: restarted
+
+    - name: Reload service httpd, in all cases
+      ansible.builtin.service:
+        name: httpd
+        state: reloaded
+
+    - name: Enable service httpd, and not touch the state
+      ansible.builtin.service:
+        name: httpd
+        enabled: yes
+
+    - name: Restart network service for interface eth0
+      ansible.builtin.service:
+        name: network
+        state: restarted
+        args: eth0

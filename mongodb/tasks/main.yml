@@ -1,0 +1,13 @@
+---
+# tasks file for mysql-server
+- name: Install mysql-server
+  apt:
+    name: mysql-server
+    state: present
+    update_cache: yes
+
+- name: Remove "mysql-server" package
+  apt:
+    name: mysql-server
+    state: absent
+    update_cache: yes

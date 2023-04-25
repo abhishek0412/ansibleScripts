@@ -1,0 +1,18 @@
+galaxy_info:
+  author: Shashi Yebbare
+  description: Install and configure MySQL Database
+  company: SKYDEVOPS
+  license: license (Apache 2.0)
+  min_ansible_version: 2.4
+  github_branch: master
+  platforms:
+  - name: EL
+    versions:
+    - 7
+    - 6
+  - name: Ubuntu
+    versions:
+      - trusty
+      - xenial
+  galaxy_tags: [MySQL]
+dependencies: []
