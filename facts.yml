@@ -24,42 +24,6 @@
     - name: Print the facts
       debug:
         var: ansible_facts['ansible_distribution'] # ansible_facts is a dictionary
-
-# playbook to gather facts about the system
-- name: Gather facts
-  hosts: all
-  gather_facts: yes
-  tasks:
-    - name: Print the facts
-      debug:
-        var: ansible_facts['ansible_distribution'] # ansible_facts is a dictionary
-    - name: Print the facts
-      debug:
-        var: ansible_facts['ansible_distribution_version'] # ansible_facts is a dictionary
-
-# playbook to gather facts about the system
-- name: Gather facts
-  hosts: all
-  gather_facts: yes
-  tasks:
-    - name: Print the facts
-      debug:
-        var: ansible_facts['ansible_distribution'] # ansible_facts is a dictionary
-    - name: Print the facts
-      debug:
-        var: ansible_facts['ansible_distribution_version'] # ansible_facts is a dictionary
-    - name: Print the facts
-      debug:
-        var: ansible_facts['ansible_distribution_major_version'] # ansible_facts is a dictionary
-
-# playbook to gather facts about the system
-- name: Gather facts
-  hosts: all
-  gather_facts: yes
-  tasks:
-    - name: Print the facts
-      debug:
-        var: ansible_facts['ansible_distribution'] # ansible_facts is a dictionary
     - name: Print the facts
       debug:
         var: ansible_facts['ansible_distribution_version'] # ansible_facts is a dictionary
@@ -70,23 +34,4 @@
       debug:
         var: ansible_facts['ansible_distribution_release'] # ansible_facts is a dictionary
 
-# playbook to gather facts about the system
-- name: Gather facts
-  hosts: all
-  gather_facts: yes
-  tasks:
-    - name: Print the facts
-      debug:
-        var: ansible_facts['ansible_distribution'] # ansible_facts is a dictionary
-    - name: Print the facts
-      debug:
-        var: ansible_facts['ansible_distribution_version'] # ansible_facts is a dictionary
-    - name: Print the facts
-      debug:
-        var: ansible_facts['ansible_distribution_major_version'] # ansible_facts is a dictionary
-    - name: Print the facts
-      debug:
-        var: ansible_facts['ansible_distribution_release'] # ansible_facts is a dictionary
-    - name: Print the facts
-      debug:
-        var: ansible_facts['ansible_distribution_file_variety'] # ansible_facts is a dictionary
+
