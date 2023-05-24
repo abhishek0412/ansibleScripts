@@ -1,0 +1,55 @@
+# --- represents this file as a playbook
+---
+# Use [space]play[space] where play is combination of hosts+tasks
+- name: Play to playwound winrm module
+  hosts: krishna
+  # Become root user
+  # List of tasks to be execute
+  tasks:
+    # Install/uninstall with chocolatey
+    - name: Ensure 7-Zip is installed through Chocolatey
+      win_chocolatey:
+        name: 7zip
+        state: present
+
+    - name: Ensure 7-Zip is uninstalled through Chocolatey
+      win_chocolatey:
+        name: 7zip
+        state: absent
+    - name: Run a command under cmd
+      win_shell: mkdir C:\temp
+      args:
+        executable: cmd.exe
+
+    - name: Run a multiple shell commands
+      win_shell: |
+        New-Item -Path C:\temp -ItemType Directory
+        Remove-Item -Path C:\temp -Force -Recurse
+        $path_info = Get-Item -Path C:\temp
+        $path_info.FullName
+
+    - name: Run an executable using win_command
+      win_command: whoami.exe
+
+    - name: Run a cmd command
+      win_command: cmd.exe /c mkdir C:\temp
+
+    - name: Touch a file (creates if not present, updates modification time if present)
+      win_file:
+        path: C:\Temp\foo.conf
+        state: touch
+
+    - name: Remove a file, if present
+      win_file:
+        path: C:\Temp\foo.conf
+        state: absent
+
+    - name: Create directory structure
+      win_file:
+        path: C:\Temp\folder\subfolder
+        state: directory
+
+    - name: Remove directory structure
+      win_file:
+        path: C:\Temp
+        state: absent
